@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sudoku Solver</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="css/sudoku.css">
+</head>
+
+<body>
+  <div class="puzzle">
+    <div class="block">
+      <div class="cell blk-1" id="cell-0"><input type="text"></div>
+      <div class="cell blk-1" id="cell-1"><input type="text"></div>
+      <div class="cell blk-1" id="cell-2"><input type="text"></div>
+      <div class="cell blk-1" id="cell-9"><input type="text"></div>
+      <div class="cell blk-1" id="cell-10"><input type="text"></div>
+      <div class="cell blk-1" id="cell-11"><input type="text"></div>
+      <div class="cell blk-1" id="cell-18"><input type="text"></div>
+      <div class="cell blk-1" id="cell-19"><input type="text"></div>
+      <div class="cell blk-1" id="cell-20"><input type="text"></div>
+    </div>
+
+    <div class="block">
+      <div class="cell blk-2" id="cell-3"><input type="text"></div>
+      <div class="cell blk-2" id="cell-4"><input type="text"></div>
+      <div class="cell blk-2" id="cell-5"><input type="text"></div>
+      <div class="cell blk-2" id="cell-12"><input type="text"></div>
+      <div class="cell blk-2" id="cell-13"><input type="text"></div>
+      <div class="cell blk-2" id="cell-14"><input type="text"></div>
+      <div class="cell blk-2" id="cell-21"><input type="text"></div>
+      <div class="cell blk-2" id="cell-22"><input type="text"></div>
+      <div class="cell blk-2" id="cell-23"><input type="text"></div>
+    </div>
+    
+    <div class="block">
+      <div class="cell blk-3" id="cell-6"><input type="text"></div>
+      <div class="cell blk-3" id="cell-7"><input type="text"></div>
+      <div class="cell blk-3" id="cell-8"><input type="text"></div>
+      <div class="cell blk-3" id="cell-15"><input type="text"></div>
+      <div class="cell blk-3" id="cell-16"><input type="text"></div>
+      <div class="cell blk-3" id="cell-17"><input type="text"></div>
+      <div class="cell blk-3" id="cell-24"><input type="text"></div>
+      <div class="cell blk-3" id="cell-25"><input type="text"></div>
+      <div class="cell blk-3" id="cell-26"><input type="text"></div>
+    </div>
+
+    <div class="block">
+      <div class="cell blk-4" id="cell-27"><input type="text"></div>
+      <div class="cell blk-4" id="cell-28"><input type="text"></div>
+      <div class="cell blk-4" id="cell-29"><input type="text"></div>
+      <div class="cell blk-4" id="cell-36"><input type="text"></div>
+      <div class="cell blk-4" id="cell-37"><input type="text"></div>
+      <div class="cell blk-4" id="cell-38"><input type="text"></div>
+      <div class="cell blk-4" id="cell-45"><input type="text"></div>
+      <div class="cell blk-4" id="cell-46"><input type="text"></div>
+      <div class="cell blk-4" id="cell-47"><input type="text"></div>
+    </div>
+    
+    <div class="block">
+      <div class="cell blk-5" id="cell-30"><input type="text"></div>
+      <div class="cell blk-5" id="cell-31"><input type="text"></div>
+      <div class="cell blk-5" id="cell-32"><input type="text"></div>
+      <div class="cell blk-5" id="cell-39"><input type="text"></div>
+      <div class="cell blk-5" id="cell-40"><input type="text"></div>
+      <div class="cell blk-5" id="cell-41"><input type="text"></div>
+      <div class="cell blk-5" id="cell-48"><input type="text"></div>
+      <div class="cell blk-5" id="cell-49"><input type="text"></div>
+      <div class="cell blk-5" id="cell-50"><input type="text"></div>
+    </div>
+    
+    
+    <div class="block">
+      <div class="cell blk-6" id="cell-33"><input type="text"></div>
+      <div class="cell blk-6" id="cell-34"><input type="text"></div>
+      <div class="cell blk-6" id="cell-35"><input type="text"></div>
+      <div class="cell blk-6" id="cell-42"><input type="text"></div>
+      <div class="cell blk-6" id="cell-43"><input type="text"></div>
+      <div class="cell blk-6" id="cell-44"><input type="text"></div>
+      <div class="cell blk-6" id="cell-51"><input type="text"></div>
+      <div class="cell blk-6" id="cell-52"><input type="text"></div>
+      <div class="cell blk-6" id="cell-53"><input type="text"></div>
+    </div>
+
+    <div class="block">
+      <div class="cell blk-7" id="cell-54"><input type="text"></div>
+      <div class="cell blk-7" id="cell-55"><input type="text"></div>
+      <div class="cell blk-7" id="cell-56"><input type="text"></div>
+      <div class="cell blk-7" id="cell-63"><input type="text"></div>
+      <div class="cell blk-7" id="cell-64"><input type="text"></div>
+      <div class="cell blk-7" id="cell-65"><input type="text"></div>
+      <div class="cell blk-7" id="cell-72"><input type="text"></div>
+      <div class="cell blk-7" id="cell-73"><input type="text"></div>
+      <div class="cell blk-7" id="cell-74"><input type="text"></div>
+    </div>
+    
+    <div class="block">
+      <div class="cell blk-8" id="cell-57"><input type="text"></div>
+      <div class="cell blk-8" id="cell-58"><input type="text"></div>
+      <div class="cell blk-8" id="cell-59"><input type="text"></div>
+      <div class="cell blk-8" id="cell-66"><input type="text"></div>
+      <div class="cell blk-8" id="cell-67"><input type="text"></div>
+      <div class="cell blk-8" id="cell-68"><input type="text"></div>
+      <div class="cell blk-8" id="cell-75"><input type="text"></div>
+      <div class="cell blk-8" id="cell-76"><input type="text"></div>
+      <div class="cell blk-8" id="cell-77"><input type="text"></div>
+    </div>
+    
+    <div class="block">
+      <div class="cell blk-9" id="cell-60"><input type="text"></div>
+      <div class="cell blk-9" id="cell-61"><input type="text"></div>
+      <div class="cell blk-9" id="cell-62"><input type="text"></div>
+      <div class="cell blk-9" id="cell-69"><input type="text"></div>
+      <div class="cell blk-9" id="cell-70"><input type="text"></div>
+      <div class="cell blk-9" id="cell-71"><input type="text"></div>
+      <div class="cell blk-9" id="cell-78"><input type="text"></div>
+      <div class="cell blk-9" id="cell-79"><input type="text"></div>
+      <div class="cell blk-9" id="cell-80"><input type="text"></div>
+    </div>
+  </div>
+  <br>
+
+  <select id="select">
+    <option value="pre0">Puzzle 1</option>
+    <option value="pre1">Puzzle 2</option>
+    <option value="pre2">Puzzle 3</option>
+    <option value="pre3">Puzzle 4</option>
+    <option value="pre4">Puzzle 5</option>
+    <option value="pre5">Puzzle 6</option>
+    <option value="pre6">Puzzle 7</option>
+    <option value="pre7">Puzzle 8</option>
+    <option value="pre8">Puzzle 9</option>
+    <option value="pre9">Puzzle 10</option>
+    <option value="pre10">Puzzle 11</option>
+    <option value="pre11">Puzzle 12</option>
+    <option value="pre12">Puzzle 13</option>
+    <option value="pre13">Puzzle 14</option>
+    <option value="pre14">Puzzle 15</option>
+  </select>
+
+  <button type="button" id="solve">SOLVE</button>
+
+  <section id="error-msg">
+    <h1>Invalid Puzzle!!!</h1>
+    <p>Click to remove</p>
+  </section>
+  
+  <script src="javascript/puzzles.js"></script>
+  <script src="javascript/sudoku.js"></script>
+  <script src="javascript/main.js"></script>
+</body>
+</html>

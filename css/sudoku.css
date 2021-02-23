@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+}
+
+body {
+  background-color: #333;
+}
+
+.cell {
+  height: 40px;
+  width: 40px;
+  background-color: aqua;
+  float: left;
+  border-style: solid;
+  border-radius: 8px;
+  border-width: thin;
+  margin: 1px;
+  font-size: 30px;
+}
+
+.puzzle {
+  height: 380px;
+  width: 425px;
+  margin: 20px auto;
+
+}
+
+.block {
+  border: thin solid white;
+  height: 135px;
+  width: 135px;
+  float: left;
+}
+
+button {
+  display: block;
+  margin-top: 20px;
+  font-size: 20px;
+  padding: 6px;
+  width: 100px;
+  margin: 0 auto;
+  border-radius: 20px;
+  background-color: aquamarine;
+  box-shadow: 0 0 15px #333;
+  transition: all .5s;
+  outline: none;
+}
+
+button:hover {
+  transform: scale(1.08);
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(1.04);
+  box-shadow: 0 0 10px #333;
+}
+
+input {
+  margin: 0 auto;
+  width: 38px;
+  height: 38px;
+  font-size: 30px;
+  text-align: center;
+  padding: 1px;
+  background-color: transparent;
+  border: none;
+}
+
+#select {
+  font-size: 20px;
+  display: block;
+  margin: 20px auto;
+}
+
+#error-msg {
+  display: none;
+  position: absolute;
+  width: 325px;
+  top: 200px;
+  left: 49%;
+  transform: translateX(-50%);
+  background-color: bisque;
+  border-radius: 10px;
+  border: thin solid #333;
+  text-align: center;
+  cursor: pointer;
+}
+
+#error-msg h1 {
+  color: red;
+}
