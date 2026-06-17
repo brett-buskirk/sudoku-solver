@@ -34,14 +34,41 @@ function buildBoard() {
   }
 }
 
-// Populate the puzzle dropdown from the puzzles list.
+const EMPTY_GRID = new Array(SIZE * SIZE).fill(0)
+
+// The starting position of the current selection, used by Clear to reset.
+let currentGrid = EMPTY_GRID.slice()
+
+// Puzzles are stored as 81-character strings ("0" for a blank).
+const parseGrid = (str) => str.split('').map(Number)
+
+// Populate the dropdown: an empty board first, then the puzzles grouped by
+// difficulty (Easy, Moderate, Difficult, Epic).
 function buildSelect() {
-  puzzles.forEach((_, i) => {
-    const option = document.createElement('option')
-    option.value = String(i)
-    option.textContent = `Puzzle ${i + 1}`
-    select.appendChild(option)
+  const empty = document.createElement('option')
+  empty.value = 'empty'
+  empty.textContent = 'Empty'
+  select.appendChild(empty)
+
+  let counter = 0
+  Object.entries(puzzles).forEach(([difficulty, list]) => {
+    const group = document.createElement('optgroup')
+    group.label = difficulty
+    list.forEach((_, i) => {
+      const option = document.createElement('option')
+      option.value = `${difficulty}:${i}`
+      option.textContent = `Puzzle ${++counter}`
+      group.appendChild(option)
+    })
+    select.appendChild(group)
   })
+}
+
+// Resolve a dropdown value to its starting grid of 81 numbers.
+function gridForValue(value) {
+  if (value === 'empty') return EMPTY_GRID.slice()
+  const [difficulty, index] = value.split(':')
+  return parseGrid(puzzles[difficulty][Number(index)])
 }
 
 function setStatus(message, type) {
@@ -49,10 +76,9 @@ function setStatus(message, type) {
   status.className = 'status' + (type ? ` ${type}` : '')
 }
 
-// Load a preset puzzle. Givens are marked so they can be styled and so a
-// later Solve can colour only the computed digits.
-function loadPuzzle(index) {
-  const values = puzzles[index].flat()
+// Fill the board from a grid. Givens are marked so a later Solve colours only
+// the computed digits.
+function loadGrid(values) {
   inputs.forEach((input, i) => {
     const value = values[i]
     input.value = value === 0 ? '' : String(value)
@@ -87,13 +113,11 @@ function solve() {
   setStatus('Solved!', 'success')
 }
 
+// Clear restores the current selection to its starting point, removing any
+// entries the user (or the solver) added. For the Empty board this clears
+// everything.
 function clearBoard() {
-  inputs.forEach(input => {
-    input.value = ''
-    input.classList.remove('given', 'solved')
-  })
-  select.selectedIndex = -1
-  setStatus('')
+  loadGrid(currentGrid)
 }
 
 // Restrict input to a single digit 1-9 and clear any styling on edit.
@@ -119,11 +143,15 @@ board.addEventListener('keydown', (e) => {
   }
 })
 
-select.addEventListener('change', (e) => loadPuzzle(Number(e.target.value)))
+select.addEventListener('change', (e) => {
+  currentGrid = gridForValue(e.target.value)
+  loadGrid(currentGrid)
+})
 gid('solve').addEventListener('click', solve)
 gid('clear').addEventListener('click', clearBoard)
 
 buildBoard()
 buildSelect()
-loadPuzzle(0)
+select.value = 'empty'
+loadGrid(currentGrid)
 })()

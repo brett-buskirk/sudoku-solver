@@ -74,7 +74,7 @@ h1 {
   outline: none;
   text-align: center;
   background-color: var(--cell-bg);
-  color: var(--solved);
+  color: var(--given);
   font-size: clamp(1.1rem, 6vw, 1.7rem);
   font-weight: 600;
   caret-color: var(--accent-dark);

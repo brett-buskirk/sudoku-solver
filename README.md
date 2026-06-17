@@ -7,13 +7,15 @@ since been cleaned up and given a more reliable solver.
 
 ## Features ##
 
-- 15 built-in puzzles, plus the ability to type in your own.
+- 100 built-in puzzles grouped by difficulty (Easy, Moderate, Difficult,
+  Epic), plus an empty board for typing in your own.
 - A backtracking solver that correctly solves any valid puzzle, including the
   hardest ones.
 - Validation with clear messages for invalid puzzles (a repeated digit) and
   puzzles that have no solution.
 - Given clues and computed answers are shown in different colours.
-- Keyboard arrow-key navigation between cells and a Clear button.
+- Keyboard arrow-key navigation between cells, and a Clear button that resets
+  the current puzzle to its starting position.
 
 ## Running it ##
 
