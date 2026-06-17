@@ -16,11 +16,20 @@ since been cleaned up and given a more reliable solver.
 - Given clues and computed answers are shown in different colours.
 - Keyboard arrow-key navigation between cells, and a Clear button that resets
   the current puzzle to its starting position.
+- Installable as a Progressive Web App (PWA) that works offline.
 
 ## Running it ##
 
-Open `index.html` in any browser, pick a puzzle (or enter your own values), and
-click **Solve**.
+The app is hosted at **https://brett-buskirk.github.io/sudoku-solver/**. Pick a
+puzzle (or enter your own values) and click **Solve**.
+
+You can also install it: most browsers will offer an "Install" / "Add to Home
+Screen" option, after which it launches in its own window and works offline.
+
+To run it locally, serve the folder over HTTP (for example
+`python3 -m http.server`) and open the printed address. Opening `index.html`
+directly from disk works for solving too, but the offline/installable PWA
+features require it to be served over HTTP(S).
 
 ## Project layout ##
 
@@ -29,3 +38,5 @@ click **Solve**.
 - `javascript/puzzles.js` — the built-in puzzle data.
 - `javascript/sudoku.js` — the solver (`solveSudoku`).
 - `javascript/main.js` — builds the board and wires up the UI.
+- `manifest.webmanifest`, `sw.js`, `icons/` — PWA manifest, service worker
+  (offline caching), and app icons.
