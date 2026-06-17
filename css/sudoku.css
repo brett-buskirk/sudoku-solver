@@ -1,92 +1,156 @@
+:root {
+  --bg: #1f2430;
+  --panel: #2b313f;
+  --grid-line: #0f131b;
+  --cell-bg: #f4f7fb;
+  --cell-bg-alt: #e7edf5;
+  --given: #1f2430;
+  --solved: #2f7dd1;
+  --accent: #36c08b;
+  --accent-dark: #2aa074;
+  --text: #e7edf5;
+  --error: #e0566b;
+}
+
 * {
+  box-sizing: border-box;
   margin: 0;
 }
 
 body {
-  background-color: #333;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.app {
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.9rem;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  margin: 6px 0 20px;
+  color: #9aa6b8;
+  font-size: 0.95rem;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  background-color: var(--grid-line);
+  border: 3px solid var(--grid-line);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .cell {
-  height: 40px;
-  width: 40px;
-  background-color: aqua;
-  float: left;
-  border-style: solid;
+  position: relative;
+  border: 1px solid #c4cedd;
+}
+
+/* Thicker lines on 3x3 box boundaries. */
+.cell.box-left   { border-left-width: 2px;  border-left-color: var(--grid-line); }
+.cell.box-right  { border-right-width: 2px; border-right-color: var(--grid-line); }
+.cell.box-top    { border-top-width: 2px;   border-top-color: var(--grid-line); }
+.cell.box-bottom { border-bottom-width: 2px; border-bottom-color: var(--grid-line); }
+
+.cell input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  text-align: center;
+  background-color: var(--cell-bg);
+  color: var(--solved);
+  font-size: clamp(1.1rem, 6vw, 1.7rem);
+  font-weight: 600;
+  caret-color: var(--accent-dark);
+}
+
+.cell input:focus {
+  background-color: #d4e6fb;
+}
+
+.cell input.given {
+  color: var(--given);
+}
+
+.cell input.solved {
+  color: var(--solved);
+}
+
+.status {
+  min-height: 1.4rem;
+  margin: 16px 0;
+  font-weight: 600;
+}
+
+.status.success { color: var(--accent); }
+.status.error   { color: var(--error); }
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+select {
+  font-size: 1rem;
+  padding: 6px 10px;
   border-radius: 8px;
-  border-width: thin;
-  margin: 1px;
-  font-size: 30px;
+  border: 1px solid #4a5266;
+  background-color: var(--panel);
+  color: var(--text);
+  cursor: pointer;
 }
 
-.puzzle {
-  height: 380px;
-  width: 425px;
-  margin: 20px auto;
-
-}
-
-.block {
-  border: thin solid white;
-  height: 135px;
-  width: 135px;
-  float: left;
+.buttons {
+  display: flex;
+  gap: 12px;
 }
 
 button {
-  display: block;
-  margin-top: 20px;
-  font-size: 20px;
-  padding: 6px;
-  width: 100px;
-  margin: 0 auto;
-  border-radius: 20px;
-  background-color: aquamarine;
-  box-shadow: 0 0 15px #333;
-  transition: all .5s;
-  outline: none;
-}
-
-button:hover {
-  transform: scale(1.08);
-  cursor: pointer;
-}
-
-button:active {
-  transform: scale(1.04);
-  box-shadow: 0 0 10px #333;
-}
-
-input {
-  margin: 0 auto;
-  width: 38px;
-  height: 38px;
-  font-size: 30px;
-  text-align: center;
-  padding: 1px;
-  background-color: transparent;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px 24px;
   border: none;
-}
-
-#select {
-  font-size: 20px;
-  display: block;
-  margin: 20px auto;
-}
-
-#error-msg {
-  display: none;
-  position: absolute;
-  width: 325px;
-  top: 200px;
-  left: 49%;
-  transform: translateX(-50%);
-  background-color: bisque;
-  border-radius: 10px;
-  border: thin solid #333;
-  text-align: center;
+  border-radius: 24px;
+  background-color: var(--accent);
+  color: #11331f;
   cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
 }
 
-#error-msg h1 {
-  color: red;
+button:hover { background-color: var(--accent-dark); transform: translateY(-1px); }
+button:active { transform: translateY(0); }
+
+button.secondary {
+  background-color: transparent;
+  color: var(--text);
+  border: 1px solid #4a5266;
+}
+
+button.secondary:hover {
+  background-color: var(--panel);
 }

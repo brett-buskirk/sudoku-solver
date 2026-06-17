@@ -166,4 +166,6 @@ const puzzles = [
   ]
 ]
 
-module.exports = puzzles
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = puzzles
+}
