@@ -40,3 +40,7 @@ features require it to be served over HTTP(S).
 - `javascript/main.js` — builds the board and wires up the UI.
 - `manifest.webmanifest`, `sw.js`, `icons/` — PWA manifest, service worker
   (offline caching), and app icons.
+
+## License ##
+
+Released under the [MIT License](LICENSE).
