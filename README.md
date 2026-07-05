@@ -1,9 +1,8 @@
 # Sudoku Solver #
 
 A small browser app that solves Sudoku puzzles, built with plain HTML, CSS, and
-JavaScript (no dependencies or build step). It started as a project I made while
-learning to code at [The Last Mile](https://thelastmile.org/) in 2020 and has
-since been cleaned up and given a more reliable solver.
+JavaScript (no dependencies or build step). It started as an early
+learning project and has since been cleaned up and given a more reliable solver.
 
 ## Features ##
 
